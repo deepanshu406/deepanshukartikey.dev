@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+
+<td valign="top" class="sidebar">
+
+<b>Deepanshu's site:</b><br><br>
+<a href="/">Homepage</a><br>
+<a href="/blog/">Blog</a><br>
+<a href="/contributions/">Open Source</a><br>
+<a href="/tools/">Tools</a><br>
+<a href="/about/">About</a><br>
+<br>
+<b>Open Source:</b><br>
+<a href="/kernel-contributions/">Kernel</a><br>
+<a href="/opentelemetry/">OpenTelemetry</a><br>
+<br>
+<b>Tools:</b><br>
+<a href="/trackleak/">TrackLeak</a><br>
+<a href="/ebpf-profiler/">eBPF Profiler</a><br>
+<br>
+<b>Links:</b><br>
+<a href="https://github.com/deepanshuclickpost" target="_blank">GitHub</a><br>
+<a href="https://www.linkedin.com/in/deepanshu-kartikey-16024498/" target="_blank">LinkedIn</a><br>
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">kernel.org</a><br>
+
+</td>
+
+<td valign="top" class="main">
+{{ content }}
+</td>
+
+</tr>
+</table>
+
+<br>
+<hr>
+<small>
+Copyright 2026 Deepanshu Kartikey, all rights reserved &mdash;
+<a href="mailto:kartikey406@gmail.com">kartikey406@gmail.com</a>
+</small>
+
+</body>
+</html>

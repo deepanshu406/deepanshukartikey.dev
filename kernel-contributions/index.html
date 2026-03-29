@@ -1,0 +1,109 @@
+---
+layout: default
+title: Kernel Contributions
+---
+
+<h1>Linux Kernel Contributions</h1>
+
+<p>
+  Patches merged into mainline Linux, fetched live from
+  <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">kernel.org</a>.
+</p>
+
+<div id="commits-container">
+  <ul class="patch-list" id="commits-list"></ul>
+  <p id="loading-msg" style="color:#7a6a52;font-size:13px;">Loading patches...</p>
+  <p id="error-msg" style="color:#8b4513;font-size:13px;display:none;">
+    Could not fetch live data. 
+    <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">View directly on kernel.org &rarr;</a>
+  </p>
+</div>
+
+<button id="load-more-btn" style="display:none;margin-top:16px;font-family:'Courier New',monospace;font-size:13px;background:#ede8dc;border:1px solid #d4c9b5;color:#2c2416;padding:8px 20px;cursor:pointer;">
+  Load more patches &darr;
+</button>
+
+<script>
+const KERNEL_ORG_URL = 'https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu';
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+const ALL_PATCHES = [
+  { hash: '2deb255d89f4', subject: 'kernel/fork: validate exit_signal in kernel_clone()', subsystem: 'kernel/fork', lkml: 'https://lkml.kernel.org/r/20260316151956.563558-1-kartikey406@gmail.com', meta: 'Acked-by: Oleg Nesterov · Signed-off: Andrew Morton' },
+  { hash: 'ea3ec364b624', subject: 'ext4: convert inline data to extents when truncate exceeds inline size', subsystem: 'ext4', lkml: 'https://patch.msgid.link/20260207043607.1175976-1-kartikey406@gmail.com', meta: 'Signed-off: Theodore Ts\'o' },
+  { hash: 'd7ea8495fd30', subject: 'fs/ntfs3: fix missing run load for vcn0 in attr_data_get_block_locked()', subsystem: 'fs/ntfs3', lkml: '', meta: 'Signed-off: Konstantin Komarov' },
+  { hash: '922814879542', subject: 'atm: lec: fix use-after-free in sock_def_readable()', subsystem: 'atm/lec', lkml: 'https://patch.msgid.link/20260309155908.508768-1-kartikey406@gmail.com', meta: 'Reviewed-by: Eric Dumazet · Signed-off: Jakub Kicinski' },
+  { hash: '7d73872d949c', subject: 'wifi: mac80211: check tdls flag in ieee80211_tdls_oper', subsystem: 'wifi/mac80211', lkml: 'https://patch.msgid.link/20260313092417.520807-1-kartikey406@gmail.com', meta: 'Suggested-by: Johannes Berg · Signed-off: Johannes Berg' },
+  { hash: 'e9075e420a1e', subject: 'netfs: Fix NULL pointer dereference in netfs_unbuffered_write() on retry', subsystem: 'netfs', lkml: 'https://patch.msgid.link/20260307043947.347092-1-kartikey406@gmail.com', meta: 'Signed-off: Christian Brauner' },
+  { hash: '67e467a11f62', subject: 'netfs: Fix kernel BUG in netfs_limit_iter() for ITER_KVEC iterators', subsystem: 'netfs', lkml: 'https://patch.msgid.link/20260307090041.359870-1-kartikey406@gmail.com', meta: 'Signed-off: Christian Brauner' },
+  { hash: 'dd085fe9a8eb', subject: 'mm: thp: deny THP for files on anonymous inodes', subsystem: 'mm/thp', lkml: '', meta: 'Signed-off: Andrew Morton' },
+  { hash: 'da6f5bbc2e79', subject: 'gfs2: fix memory leaks in gfs2_fill_super error path', subsystem: 'gfs2', lkml: '', meta: 'Signed-off: Andrew Morton' },
+  { hash: 'daafcc0ef0b3', subject: 'tracing/dma: Cap dma_map_sg tracepoint arrays to prevent buffer overflow', subsystem: 'tracing/dma', lkml: '', meta: 'Signed-off: Steven Rostedt' },
+  { hash: 'faddeb848305', subject: 'gfs2: Fix use-after-free in iomap inline data write path', subsystem: 'gfs2', lkml: '', meta: 'Signed-off: Andrew Morton' },
+  { hash: '2724138b2f7f', subject: 'iommufd: Initialize batch->kind in batch_clear()', subsystem: 'iommufd', lkml: '', meta: 'Signed-off: Jason Gunthorpe' },
+  { hash: '5747435e0fd4', subject: 'mm/vmalloc: prevent RCU stalls in kasan_release_vmalloc_node', subsystem: 'mm/vmalloc', lkml: 'https://lkml.kernel.org/r/20260112103612.627247-1-kartikey406@gmail.com', meta: 'Reviewed-by: Uladzislau Rezki · Signed-off: Andrew Morton' },
+  { hash: 'c62e7e6444cd', subject: 'ocfs2: add check for free bits before allocation in ocfs2_move_extent()', subsystem: 'ocfs2', lkml: 'https://lkml.kernel.org/r/20260104133504.14810-1-kartikey406@gmail.com', meta: 'Reviewed-by: Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: '1524af3685b3', subject: 'ocfs2: validate inline data i_size during inode read', subsystem: 'ocfs2', lkml: 'https://lkml.kernel.org/r/20251212052132.16750-1-kartikey406@gmail.com', meta: 'Reviewed-by: Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: '688dab01c3bb', subject: 'ocfs2: validate i_refcount_loc when refcount flag is set', subsystem: 'ocfs2', lkml: 'https://lkml.kernel.org/r/20251212055826.20929-1-kartikey406@gmail.com', meta: 'Reviewed-by: Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: 'ab7ad7abb366', subject: 'romfs: check sb_set_blocksize() return value', subsystem: 'romfs', lkml: 'https://patch.msgid.link/20260113084037.1167887-1-kartikey406@gmail.com', meta: 'Signed-off: Christian Brauner' },
+  { hash: '9df5fad801c5', subject: 'bpf: Reject BPF_MAP_TYPE_INSN_ARRAY in check_reg_const_str()', subsystem: 'bpf', lkml: 'https://lore.kernel.org/r/20260107021037.289644-1-kartikey406@gmail.com', meta: 'Acked-by: Anton Protopopov · Signed-off: Alexei Starovoitov' },
+  { hash: '1ab526d97a57', subject: 'net: nfc: fix deadlock between nfc_unregister_device and rfkill_fop_write', subsystem: 'net/nfc', lkml: 'https://patch.msgid.link/20251218012355.279940-1-kartikey406@gmail.com', meta: 'Reviewed-by: Krzysztof Kozlowski · Signed-off: Paolo Abeni' },
+  { hash: 'a1e077a3f76e', subject: 'net: usb: asix: validate PHY address before use', subsystem: 'net/usb/asix', lkml: 'https://patch.msgid.link/20251218011156.276824-1-kartikey406@gmail.com', meta: 'Reviewed-by: Andrew Lunn · Signed-off: Paolo Abeni' },
+  { hash: 'a58383fa45c7', subject: 'block: add allocation size check in blkdev_pr_read_keys()', subsystem: 'block', lkml: '', meta: 'Reviewed-by: Martin K. Petersen · Signed-off: Jens Axboe' },
+  { hash: 'b57f2ddd2873', subject: 'btrfs: fix memory leak of fs_devices in degraded seed device path', subsystem: 'btrfs', lkml: '', meta: 'Signed-off: David Sterba' },
+  { hash: '2a4f33430e96', subject: 'ocfs2: validate inline xattr size and entry count in ocfs2_xattr_ibody_list', subsystem: 'ocfs2', lkml: '', meta: 'Reviewed-by: Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: '53ca00a19d34', subject: 'mm/slub: reset KASAN tag in defer_free() before accessing freed memory', subsystem: 'mm/slub', lkml: '', meta: 'Signed-off: Andrew Morton' },
+  { hash: 'd33f89b34aa3', subject: 'f2fs: invalidate dentry cache on failed whiteout creation', subsystem: 'f2fs', lkml: '', meta: 'Signed-off: Jaegeuk Kim' },
+  { hash: 'b042fdf18e89', subject: 'tracing: Fix WARN_ON in tracing_buffers_mmap_close for split VMAs', subsystem: 'tracing', lkml: '', meta: 'Signed-off: Steven Rostedt' },
+  { hash: 'de8798965fd0', subject: 'mm/memfd: fix information leak in hugetlb folios', subsystem: 'mm/memfd', lkml: '', meta: 'Signed-off: Andrew Morton' },
+  { hash: '93ce0ff117b0', subject: 'ocfs2: validate cl_bpc in allocator inodes to prevent divide-by-zero', subsystem: 'ocfs2', lkml: '', meta: 'Reviewed-by: Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: '892e1cf17555', subject: 'ext4: refresh inline data size before write operations', subsystem: 'ext4', lkml: '', meta: 'Signed-off: Theodore Ts\'o' },
+  { hash: '87b318ba81dd', subject: 'comedi: fix divide-by-zero in comedi_buf_munge()', subsystem: 'comedi', lkml: 'https://patch.msgid.link/20250924102639.1256191-1-kartikey406@gmail.com', meta: 'Reviewed-by: Ian Abbott · Signed-off: Greg Kroah-Hartman' },
+  { hash: 'cec944dd329f', subject: 'hugetlbfs: move lock assertions after early returns in huge_pmd_unshare()', subsystem: 'hugetlbfs', lkml: 'https://lkml.kernel.org/r/20251014113344.21194-1-kartikey406@gmail.com', meta: 'Acked-by: David Hildenbrand · Signed-off: Andrew Morton' },
+  { hash: '78a63493f8e3', subject: 'ocfs2: clear extent cache after moving/defragmenting extents', subsystem: 'ocfs2', lkml: 'https://lore.kernel.org/all/20251009142917.517229-1-kartikey406@gmail.com/T/', meta: 'Reviewed-by: Mark Fasheh, Joseph Qi · Signed-off: Andrew Morton' },
+  { hash: '1d3ad183943b', subject: 'ext4: detect invalid INLINE_DATA + EXTENTS flag combination', subsystem: 'ext4', lkml: '', meta: 'Reviewed-by: Zhang Yi · Signed-off: Theodore Ts\'o' },
+  { hash: '15623c860c93', subject: 'nsfs: handle inode number mismatches gracefully in file handles', subsystem: 'nsfs', lkml: '', meta: 'Reviewed-by: Jan Kara · Signed-off: Christian Brauner' },
+  { hash: 'dd83609b8898', subject: 'hugetlbfs: skip VMAs without shareable locks in hugetlb_vmdelete_list', subsystem: 'hugetlbfs', lkml: 'https://lkml.kernel.org/r/20250926033255.10930-1-kartikey406@gmail.com', meta: 'Suggested-by: Andrew Morton · Signed-off: Andrew Morton' },
+  { hash: '44d2a72f4d64', subject: 'ext4: validate ea_ino and size in check_xattrs', subsystem: 'ext4', lkml: '', meta: 'Suggested-by: Theodore Ts\'o · Signed-off: Theodore Ts\'o' },
+  { hash: '00eca57d6521', subject: 'Staging: rts5208: rtsx: Removed new line in else and else if', subsystem: 'staging/rts5208', lkml: 'https://lore.kernel.org/all/20230530135120.37637-1-kartikey406@gmail.com/', meta: 'Reviewed-by: Dan Carpenter · Signed-off: Greg Kroah-Hartman' },
+];
+
+const PAGE_SIZE = 10;
+let shown = 0;
+const list = document.getElementById('commits-list');
+const loadBtn = document.getElementById('load-more-btn');
+const loadingMsg = document.getElementById('loading-msg');
+const errorMsg = document.getElementById('error-msg');
+
+function renderPatch(p) {
+  const githubUrl = `https://github.com/torvalds/linux/commit/${p.hash}`;
+  const shortHash = p.hash.substring(0, 7);
+  const title = p.lkml
+    ? `<a href="${p.lkml}" target="_blank">${p.subject}</a>`
+    : p.subject;
+  return `<li>
+    <div>
+      <span class="patch-subsystem">${p.subsystem}</span> — ${title}
+      &nbsp;<span class="patch-hash"><a href="${githubUrl}" target="_blank">${shortHash}</a></span>
+    </div>
+    <div class="patch-meta">${p.meta}</div>
+  </li>`;
+}
+
+function showMore() {
+  const next = ALL_PATCHES.slice(shown, shown + PAGE_SIZE);
+  next.forEach(p => {
+    list.insertAdjacentHTML('beforeend', renderPatch(p));
+  });
+  shown += next.length;
+  if (shown >= ALL_PATCHES.length) {
+    loadBtn.style.display = 'none';
+  } else {
+    loadBtn.style.display = 'inline-block';
+    loadBtn.textContent = `Load more patches (${ALL_PATCHES.length - shown} remaining) ↓`;
+  }
+}
+
+loadingMsg.style.display = 'none';
+showMore();
+loadBtn.addEventListener('click', showMore);
+</script>

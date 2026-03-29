@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackLeak — Deepanshu Kartikey</title>
+  <meta name="description" content="Performance Engineer · Linux Kernel Contributor">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+
+<td valign="top" class="sidebar">
+
+<b>Deepanshu's site:</b><br><br>
+<a href="/">Homepage</a><br>
+<a href="/blog/">Blog</a><br>
+<a href="/contributions/">Open Source</a><br>
+<a href="/tools/">Tools</a><br>
+<a href="/about/">About</a><br>
+<br>
+<b>Open Source:</b><br>
+<a href="/kernel-contributions/">Kernel</a><br>
+<a href="/opentelemetry/">OpenTelemetry</a><br>
+<br>
+<b>Tools:</b><br>
+<a href="/trackleak/">TrackLeak</a><br>
+<a href="/ebpf-profiler/">eBPF Profiler</a><br>
+<br>
+<b>Links:</b><br>
+<a href="https://github.com/deepanshuclickpost" target="_blank">GitHub</a><br>
+<a href="https://www.linkedin.com/in/deepanshu-kartikey-16024498/" target="_blank">LinkedIn</a><br>
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">kernel.org</a><br>
+
+</td>
+
+<td valign="top" class="main">
+<h1 id="trackleak">TrackLeak</h1>
+
+<p>A memory leak detector for Python applications that hooks directly into the allocator.</p>
+
+<hr />
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>Debugging memory leaks in production Python apps is painful. Traditional
+profilers like <code class="language-plaintext highlighter-rouge">tracemalloc</code> add overhead and miss C-extension allocations
+entirely. When your Python process is slowly eating memory in production,
+you need something that works without restarting the process and without
+adding instrumentation code.</p>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>TrackLeak intercepts both standard <code class="language-plaintext highlighter-rouge">malloc</code> and Python’s <code class="language-plaintext highlighter-rouge">PyMem_*</code> functions
+using <code class="language-plaintext highlighter-rouge">LD_PRELOAD</code>. It walks the Python stack to identify the source of each
+allocation and tracks which allocations never get freed.</p>
+
+<p>The result: a clear report showing exactly which functions are retaining
+memory — with file paths, line numbers, and retention percentages.</p>
+
+<h2 id="features">Features</h2>
+
+<ul class="patch-list">
+  <li><div><span class="patch-subsystem">zero instrumentation</span> no code changes needed in your application</div></li>
+  <li><div><span class="patch-subsystem">live processes</span> works on already-running processes</div></li>
+  <li><div><span class="patch-subsystem">C-extension aware</span> catches leaks that tracemalloc misses</div></li>
+  <li><div><span class="patch-subsystem">minimal overhead</span> designed for production use</div></li>
+  <li><div><span class="patch-subsystem">detailed output</span> file paths, line numbers, retention percentages</div></li>
+</ul>
+
+<h2 id="stack">Stack</h2>
+
+<ul class="patch-list">
+  <li><div><span class="patch-subsystem">language</span> C, Python</div></li>
+  <li><div><span class="patch-subsystem">technique</span> LD_PRELOAD · malloc hook · PyMem_* interception</div></li>
+</ul>
+
+<h2 id="links">Links</h2>
+
+<ul class="patch-list">
+  <li><div><span class="patch-subsystem">github</span> <a href="https://github.com/deepanshuclickpost/TrackLeak" target="_blank">github.com/deepanshuclickpost/TrackLeak</a></div></li>
+  <li><div><span class="patch-subsystem">blog</span> <a href="https://www.clickpost.ai/blog/hunting-python-memory-leaks-at-the-c-level" target="_blank">Hunting Python memory leaks at the C level</a></div></li>
+</ul>
+
+</td>
+
+</tr>
+</table>
+
+<br>
+<hr>
+<small>
+Copyright 2026 Deepanshu Kartikey, all rights reserved &mdash;
+<a href="mailto:kartikey406@gmail.com">kartikey406@gmail.com</a>
+</small>
+
+</body>
+</html>

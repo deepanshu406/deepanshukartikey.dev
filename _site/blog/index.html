@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Deepanshu Kartikey</title>
+  <meta name="description" content="Performance Engineer · Linux Kernel Contributor">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+
+<td valign="top" class="sidebar">
+
+<b>Deepanshu's site:</b><br><br>
+<a href="/">Homepage</a><br>
+<a href="/blog/">Blog</a><br>
+<a href="/contributions/">Open Source</a><br>
+<a href="/tools/">Tools</a><br>
+<a href="/about/">About</a><br>
+<br>
+<b>Open Source:</b><br>
+<a href="/kernel-contributions/">Kernel</a><br>
+<a href="/opentelemetry/">OpenTelemetry</a><br>
+<br>
+<b>Tools:</b><br>
+<a href="/trackleak/">TrackLeak</a><br>
+<a href="/ebpf-profiler/">eBPF Profiler</a><br>
+<br>
+<b>Links:</b><br>
+<a href="https://github.com/deepanshuclickpost" target="_blank">GitHub</a><br>
+<a href="https://www.linkedin.com/in/deepanshu-kartikey-16024498/" target="_blank">LinkedIn</a><br>
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">kernel.org</a><br>
+
+</td>
+
+<td valign="top" class="main">
+<p>
+  Writing about Linux kernel internals, performance engineering, eBPF,
+  and systems debugging. Some posts are hosted on the
+  <a href="https://clickpost.ai/blog" target="_blank">Clickpost engineering blog</a>.
+</p>
+
+<h2>Posts</h2>
+
+<ul class="post-list">
+
+  <li>
+    <div class="post-date">2025</div>
+    <div class="post-title">
+      <a href="https://www.clickpost.ai/blog/fixing-recursive-deadlock-in-opentelemetrys-python-sdk" target="_blank">
+        Fixing a recursive deadlock in OpenTelemetry's Python SDK &rarr;
+      </a>
+    </div>
+    <div class="post-desc">
+      Diagnosed a recursive deadlock triggered under concurrent tracing load in
+      OpenTelemetry's Python SDK. Traced the root cause through lock acquisition
+      order, wrote a reproducer, and submitted a fix that was merged upstream.
+    </div>
+    <div class="post-tags">opentelemetry &middot; python &middot; deadlock &middot; concurrency &middot; upstream</div>
+  </li>
+
+  <li>
+    <div class="post-date">2025</div>
+    <div class="post-title">
+      <a href="https://www.clickpost.ai/blog/scaled-servers-while-curtailing-our-cloud-costs-using-ebpf" target="_blank">
+        Scaled servers while curtailing cloud costs using eBPF &rarr;
+      </a>
+    </div>
+    <div class="post-desc">
+      Built an eBPF-powered thread profiler that traces syscalls at the kernel level
+      to track request lifecycles, measure lock wait times, and identify I/O blocking
+      in Python and Java applications. Zero code changes. Used in production at Clickpost.
+    </div>
+    <div class="post-tags">ebpf &middot; performance &middot; python &middot; java &middot; syscalls &middot; production</div>
+  </li>
+
+</ul>
+
+<p style="margin-top:24px;font-size:13px;color:#999;">
+  More posts coming. Writing about kernel debugging, memory management, and eBPF internals.
+</p>
+
+</td>
+
+</tr>
+</table>
+
+<br>
+<hr>
+<small>
+Copyright 2026 Deepanshu Kartikey, all rights reserved &mdash;
+<a href="mailto:kartikey406@gmail.com">kartikey406@gmail.com</a>
+</small>
+
+</body>
+</html>

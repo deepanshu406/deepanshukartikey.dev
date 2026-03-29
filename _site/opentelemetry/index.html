@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenTelemetry Contributions — Deepanshu Kartikey</title>
+  <meta name="description" content="Performance Engineer · Linux Kernel Contributor">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+
+<td valign="top" class="sidebar">
+
+<b>Deepanshu's site:</b><br><br>
+<a href="/">Homepage</a><br>
+<a href="/blog/">Blog</a><br>
+<a href="/contributions/">Open Source</a><br>
+<a href="/tools/">Tools</a><br>
+<a href="/about/">About</a><br>
+<br>
+<b>Open Source:</b><br>
+<a href="/kernel-contributions/">Kernel</a><br>
+<a href="/opentelemetry/">OpenTelemetry</a><br>
+<br>
+<b>Tools:</b><br>
+<a href="/trackleak/">TrackLeak</a><br>
+<a href="/ebpf-profiler/">eBPF Profiler</a><br>
+<br>
+<b>Links:</b><br>
+<a href="https://github.com/deepanshuclickpost" target="_blank">GitHub</a><br>
+<a href="https://www.linkedin.com/in/deepanshu-kartikey-16024498/" target="_blank">LinkedIn</a><br>
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">kernel.org</a><br>
+
+</td>
+
+<td valign="top" class="main">
+<h1 id="opentelemetry-contributions">OpenTelemetry Contributions</h1>
+
+<hr />
+
+<h2 id="opentelemetry-python-contrib">opentelemetry-python-contrib</h2>
+
+<ul class="patch-list">
+  <li>
+    <div>
+      <span class="patch-subsystem">opentelemetry-python-contrib</span> —
+      <a href="https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4302" target="_blank">
+        fix recursive deadlock in Python SDK
+      </a>
+      &nbsp;<span class="patch-hash"><a href="https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4302" target="_blank">PR #4302</a></span>
+    </div>
+    <div class="patch-meta">Merged upstream into opentelemetry-python-contrib</div>
+  </li>
+</ul>
+
+<h3 id="what-was-the-bug">What was the bug?</h3>
+
+<p>The OpenTelemetry Python SDK had a recursive deadlock triggered under
+concurrent tracing load. When multiple threads attempted to initialize
+tracing simultaneously, the SDK’s internal lock was acquired recursively,
+causing the process to hang indefinitely.</p>
+
+<h3 id="how-was-it-fixed">How was it fixed?</h3>
+
+<p>Diagnosed the root cause by tracing lock acquisition order across threads.
+Wrote a minimal reproducer to confirm the deadlock, then submitted a fix
+that was reviewed and merged upstream into the official
+opentelemetry-python-contrib repository.</p>
+
+<ul class="patch-list">
+  <li>
+    <div><span class="patch-subsystem">PR</span>
+      <a href="https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4302" target="_blank">
+        github.com/open-telemetry/opentelemetry-python-contrib/pull/4302
+      </a>
+    </div>
+  </li>
+  <li>
+    <div><span class="patch-subsystem">blog</span>
+      <a href="https://www.clickpost.ai/blog/fixing-recursive-deadlock-in-opentelemetrys-python-sdk" target="_blank">
+        Fixing a recursive deadlock in OpenTelemetry's Python SDK
+      </a>
+    </div>
+  </li>
+</ul>
+
+</td>
+
+</tr>
+</table>
+
+<br>
+<hr>
+<small>
+Copyright 2026 Deepanshu Kartikey, all rights reserved &mdash;
+<a href="mailto:kartikey406@gmail.com">kartikey406@gmail.com</a>
+</small>
+
+</body>
+</html>
