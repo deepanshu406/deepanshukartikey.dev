@@ -4,7 +4,7 @@ title: Home
 ---
 
 <div class="photo">
-  <img src="/assets/photo.jpg" alt="Deepanshu Kartikey">
+  <img src="{{ site.baseurl }}/assets/photo.jpg" alt="Deepanshu Kartikey">
 </div>
 
 # Deepanshu Kartikey's Homepage

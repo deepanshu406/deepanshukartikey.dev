@@ -1,6 +1,7 @@
 title: Deepanshu Kartikey
 description: Performance Engineer · Linux Kernel Contributor
-url: "https://deepanshukartikey.dev"
+url: "https://deepanshu406.github.io"
+baseurl: "/deepanshukartikey.dev"
 author: Deepanshu Kartikey
 email: kartikey406@gmail.com
 
@@ -21,4 +22,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-baseurl: "/deepanshukartikey.dev"
+  - scripts
