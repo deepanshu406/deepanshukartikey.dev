@@ -125,6 +125,8 @@ The complete fix involved converting `priv->lecd` to an RCU-protected pointer ac
 - Add `synchronize_rcu()` in `lec_atm_close()` after clearing `lecd` — guarantees all readers have finished before proceeding.
 - Remove the redundant `sk_receive_queue` drain from `lec_atm_close()` since `vcc_destroy_socket()` already drains it afterwards.
 
+Merged commit: [922814879542](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=922814879542c2e397b0e9641fd36b8202a8e555)
+
 ---
 
 ## What I Learned
