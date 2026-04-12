@@ -65,6 +65,9 @@ I identified four vulnerable sites in `lec.c` and fixed all of them. I also adde
 
 I submitted this as v1 to the netdev mailing list. I was nervous — this was going to be reviewed by some of the best kernel developers in the world.
 
+You can read the full v1 patch and Eric Dumazet's review here:
+[v1 on lore.kernel.org](https://lore.kernel.org/all/20260309093614.502094-1-kartikey406@gmail.com/T/)
+
 ---
 
 ## The Review — Eric Dumazet
@@ -125,7 +128,11 @@ The complete fix involved converting `priv->lecd` to an RCU-protected pointer ac
 - Add `synchronize_rcu()` in `lec_atm_close()` after clearing `lecd` — guarantees all readers have finished before proceeding.
 - Remove the redundant `sk_receive_queue` drain from `lec_atm_close()` since `vcc_destroy_socket()` already drains it afterwards.
 
-Merged commit: [922814879542](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=922814879542c2e397b0e9641fd36b8202a8e555)
+Full v2 patch thread and discussion:
+[v2 on lore.kernel.org](https://lore.kernel.org/all/20260309155908.508768-1-kartikey406@gmail.com/T/)
+
+Merged commit:
+[922814879542](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=922814879542c2e397b0e9641fd36b8202a8e555)
 
 ---
 
