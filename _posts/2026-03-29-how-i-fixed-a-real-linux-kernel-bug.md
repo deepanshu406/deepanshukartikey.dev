@@ -29,6 +29,9 @@ I picked up a syzbot bug report showing a KASAN use-after-free in `sock_def_read
 
 The crash was happening in the ATM LAN Emulation subsystem in `net/atm/lec.c`. The call chain showed:
 
+The original bug report that I fixed:
+[syzbot report](https://syzkaller.appspot.com/bug?extid=f50072212ab792c86925)
+
 ```
 mld_ifc_work -> lec_start_xmit -> send_to_lecd -> sock_def_readable -> CRASH
 ```
