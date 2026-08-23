@@ -16,8 +16,24 @@ Outside of work I contribute to the Linux kernel — fixing bugs in filesystems
 (kernel/fork, bpf, block, iommufd, comedi, tracing).
 Most of my bugs come from [syzbot](https://syzkaller.appspot.com).
 
-All my merged patches are on the
-[kernel.org git log](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu).
+All my merged patches are on
+[kernel.org](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu).
+
+## Talks
+
+**Syzbot to Mainline: How I Merged 21 Kernel Patches as a First-Time Contributor**
+Open Source Summit India 2026 · The Linux Foundation
+
+How I went from zero kernel knowledge to 21 merged patches in 3 months using
+syzbot — Google's 24/7 kernel fuzzer. Covers the full workflow: picking bugs,
+reproducing crashes, reading KASAN reports, writing patches, and surviving
+code review from maintainers like Andrew Morton and Theodore Ts'o.
+
+<ul class="patch-list">
+  <li><div><span class="patch-subsystem">event</span> Open Source Summit India 2026 · The Linux Foundation</div></li>
+  <li><div><span class="patch-subsystem">video</span> <a href="https://www.youtube.com/watch?v=46tO3ZzGvD4&t=31s" target="_blank">YouTube recording</a></div></li>
+  <li><div><span class="patch-subsystem">slides</span> <a href="/assets/Syzbot_to_Mainline_OSS_India_2026__1_.pdf" target="_blank">Slides (PDF)</a></div></li>
+</ul>
 
 ## Skills
 
@@ -35,5 +51,4 @@ All my merged patches are on the
   <li><div><span class="patch-subsystem">github</span> <a href="https://github.com/deepanshuclickpost" target="_blank">github.com/deepanshuclickpost</a></div></li>
   <li><div><span class="patch-subsystem">linkedin</span> <a href="https://www.linkedin.com/in/deepanshu-kartikey-16024498/" target="_blank">deepanshu-kartikey</a></div></li>
   <li><div><span class="patch-subsystem">kernel.org</span> <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=author&q=deepanshu" target="_blank">all merged patches</a></div></li>
-  <li><div><span class="patch-subsystem">lkml</span> <a href="https://lkml.kernel.org/r/kartikey406@gmail.com" target="_blank">lkml.kernel.org</a></div></li>
 </ul>

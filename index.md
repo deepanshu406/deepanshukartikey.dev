@@ -37,13 +37,19 @@ Recent blog posts:
     <span class="post-date">Mar 2026</span>
     <span>» <a href="https://www.clickpost.ai/blog/fixing-recursive-deadlock-in-opentelemetrys-python-sdk" target="_blank">Fixing a recursive deadlock in OpenTelemetry's Python SDK</a></span>
   </li>
-  <li>
-    <span class="post-date">2025</span>
-    <span>» <a href="https://www.clickpost.ai/blog/scaled-servers-while-curtailing-our-cloud-costs-using-ebpf" target="_blank">Scaled servers while curtailing cloud costs using eBPF</a></span>
-  </li>
 </ul>
 
 [Blog index](/blog/)
+
+---
+
+## Talks
+
+**Syzbot to Mainline: How I Merged 21 Kernel Patches as a First-Time Contributor**
+Open Source Summit India 2026 · The Linux Foundation
+
+<a href="https://www.youtube.com/watch?v=46tO3ZzGvD4&t=31s" target="_blank">YouTube recording</a> &nbsp;&middot;&nbsp;
+<a href="/assets/Syzbot_to_Mainline_OSS_India_2026__1_.pdf" target="_blank">Slides (PDF)</a>
 
 ---
 
