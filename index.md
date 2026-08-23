@@ -22,16 +22,24 @@ Recent blog posts:
 
 <ul class="recent-posts">
   <li>
-    <span class="post-date">2025</span>
+    <span class="post-date">Jul 2026</span>
+    <span>» <a href="https://www.clickpost.ai/blog/hidden-latency-in-the-network-where-apm-stops-looking" target="_blank">Hidden Latency in the Network: Where APM Stops Looking (Part 2)</a></span>
+  </li>
+  <li>
+    <span class="post-date">Jun 2026</span>
+    <span>» <a href="https://www.clickpost.ai/blog/hidden-latency-in-python" target="_blank">Hidden Latency in Python: Where APM Stops Looking (Part 1)</a></span>
+  </li>
+  <li>
+    <span class="post-date">Mar 2026</span>
+    <span>» <a href="/blog/2026/03/29/how-i-fixed-a-real-linux-kernel-bug/">How I Fixed a Real Linux Kernel Bug as a First-Time Contributor</a></span>
+  </li>
+  <li>
+    <span class="post-date">Mar 2026</span>
     <span>» <a href="https://www.clickpost.ai/blog/fixing-recursive-deadlock-in-opentelemetrys-python-sdk" target="_blank">Fixing a recursive deadlock in OpenTelemetry's Python SDK</a></span>
   </li>
   <li>
     <span class="post-date">2025</span>
     <span>» <a href="https://www.clickpost.ai/blog/scaled-servers-while-curtailing-our-cloud-costs-using-ebpf" target="_blank">Scaled servers while curtailing cloud costs using eBPF</a></span>
-  </li>
-  <li>
-    <span class="post-date">2025</span>
-    <span>» <a href="https://www.clickpost.ai/blog/hunting-python-memory-leaks-at-the-c-level" target="_blank">Hunting Python memory leaks at the C level</a></span>
   </li>
 </ul>
 
