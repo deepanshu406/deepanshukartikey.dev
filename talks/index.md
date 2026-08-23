@@ -23,7 +23,7 @@ code review from maintainers like Andrew Morton and Theodore Ts'o.
 <td width="50%" valign="top">
 
 <b>Slides:</b><br><br>
-<iframe src="https://docs.google.com/viewer?url=https://deepanshukartikey.dev/assets/Syzbot_to_Mainline_OSS_India_2026__1_.pdf&embedded=true"
+<iframe src="/assets/Syzbot_to_Mainline_OSS_India_2026__1_.pdf"
   width="100%"
   height="400"
   style="border: 1px solid #d4c9b5;"
